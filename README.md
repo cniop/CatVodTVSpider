@@ -5,6 +5,8 @@
 ```
 :rocket:[**TG交流群**](https://t.me/catvodtv_offical)
 
+加速地址：https://cdn.jsdelivr.net/gh/cniop/catvod@tree/master/jar/custom_spider.jar
+
 本工程最终食用需配合 猫影视TV新版（一下简称为软件） **v2.0.0**及以上版本。
 
 ![logo](app/src/main/res/drawable-xhdpi/app_icon.png)
