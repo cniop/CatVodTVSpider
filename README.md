@@ -104,7 +104,24 @@
 
 直播配置重定向代理，示例参考[https://wds.ecsxs.com/212757.json](https://wds.ecsxs.com/212757.json)
 
+### 直播配置重定向代理
 
+```json
+
+"lives": [
+    {
+      "group": "redirect",
+      "channels": [
+        {
+          "name": "redirect",
+          "urls": [
+            "proxy://do=live&type=txt&ext=aHR0cHM6Ly9mZW54aWFuZ21pLmNvZGluZy5uZXQvcC96Yi9kL256eS9naXQvcmF3L21hc3Rlci9tYW9saXZlLnR4dA=="
+          ]
+        }
+      ]
+    }
+  ]
+```
 
 ---
 **更新2.1.0_正式版**
