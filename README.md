@@ -100,9 +100,30 @@
 
 图片代理，示例参考[Nekk](/app/src/main/java/com/github/catvod/spider/Nekk.java#L449)
 
-直播配置重定向代理，示例参考[TxtSubscribe](/app/src/main/java/com/github/catvod/live/TxtSubscribe.java)
+直播配置重定向代理，代码参考[TxtSubscribe](/app/src/main/java/com/github/catvod/live/TxtSubscribe.java)
+
+直播配置重定向代理，示例参考[https://wds.ecsxs.com/212757.json](https://wds.ecsxs.com/212757.json)
+
+
 
 ---
+**更新2.1.0_正式版**
+
+采集站playUrl增强列表页筛选增加左方向键弹出解决SurfaceView渲染黑屏卡屏问题，增加S+渲染
+
+手机端增加沉浸式适配
+
+增加聚搜模式
+
+增加type：4站点类型优化精简lJK播放器内核库更多修改和修复，请更新后自行体验
+
+
+
+资源接口：
+
+https://wds.ecsxs.com/212757.json
+
+https://c1n.cn/2（这个接口就是跳转上述212757接口）
 
 ## 基础类
 ----
