@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 AppYsV2 aidi1 = new AppYsV2();
-                aidi1.init(MainActivity.this, "NFTV###https://litecucumber.coding.net/p/cat/d/config/git/raw/master/appysv2.json###nftv");
+                aidi1.init(MainActivity.this, "https://vipmv.co/xgapp.php/v1/");
                 String json = aidi1.homeContent(true);
                 System.out.println(json);
                 JSONObject homeContent = null;

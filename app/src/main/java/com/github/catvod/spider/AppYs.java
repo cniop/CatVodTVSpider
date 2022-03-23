@@ -101,8 +101,6 @@ public class AppYs extends Spider {
                                     typeN = "语言";
                                 else if (type.equals("year"))
                                     typeN = "年份";
-                                else if (type.equals("letter"))
-                                    typeN = "字母";
                             }
                             JSONObject jOne = new JSONObject();
                             jOne.put("key", type);
@@ -212,7 +210,6 @@ public class AppYs extends Spider {
             url = url.replace("筛选area", (extend != null && extend.containsKey("area")) ? extend.get("area") : "");
             url = url.replace("筛选lang", (extend != null && extend.containsKey("lang")) ? extend.get("lang") : "");
             url = url.replace("筛选year", (extend != null && extend.containsKey("year")) ? extend.get("year") : "");
-	    url = url.replace("筛选letter", (extend != null && extend.containsKey("letter")) ? extend.get("letter") : "");
             url = url.replace("排序", (extend != null && extend.containsKey("排序")) ? extend.get("排序") : "");
             SpiderDebug.log(url);
             String json = OkHttpUtil.string(url, getHeaders(url));

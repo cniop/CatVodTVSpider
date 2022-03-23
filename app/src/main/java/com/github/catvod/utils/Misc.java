@@ -36,10 +36,16 @@ public class Misc {
         return false;
     }
 
-    private static Pattern snifferMatch = Pattern.compile("http((?!http).){26,}?\\.(m3u8|mp4)\\?.*|http((?!http).){26,}\\.(m3u8|mp4)|http((?!http).){26,}?/m3u8\\?pt=m3u8.*|http((?!http).)*?default\\.ixigua\\.com/.*|http((?!http).)*?cdn-tos[^\\?]*|http((?!http).)*?/obj/tos[^\\?]*|http.*?/player/m3u8play\\.php\\?url=.*|http.*?/player/.*?[pP]lay\\.php\\?url=.*|http.*?/playlist/m3u8/\\?vid=.*|http.*?\\.php\\?type=m3u8&.*|http.*?/download.aspx\\?.*|http.*?/api/up_api.php\\?.*|https.*?\\.66yk\\.cn.*");
+    private static final Pattern snifferMatch = Pattern.compile("http((?!http).){26,}?\\.(m3u8|mp4)\\?.*|http((?!http).){26,}\\.(m3u8|mp4)|http((?!http).){26,}?/m3u8\\?pt=m3u8.*|http((?!http).)*?default\\.ixigua\\.com/.*|http((?!http).)*?cdn-tos[^\\?]*|http((?!http).)*?/obj/tos[^\\?]*|http.*?/player/m3u8play\\.php\\?url=.*|http.*?/player/.*?[pP]lay\\.php\\?url=.*|http.*?/playlist/m3u8/\\?vid=.*|http.*?\\.php\\?type=m3u8&.*|http.*?/download.aspx\\?.*|http.*?/api/up_api.php\\?.*|https.*?\\.66yk\\.cn.*|http((?!http).)*?netease\\.com/file/.*");
 
     public static boolean isVideoFormat(String url) {
-        return snifferMatch.matcher(url).find();
+        if (snifferMatch.matcher(url).find()) {
+            if (url.contains("cdn-tos") && url.contains(".js")) {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public static String fixUrl(String base, String src) {
@@ -89,6 +95,11 @@ public class Misc {
         }
         if (!url.startsWith("http")) {
             return null;
+        }
+        if (url.equals(input)) {
+            if (isVip(url) || !isVideoFormat(url)) {
+                return null;
+            }
         }
         if (Misc.isBlackVodUrl(input, url)) {
             return null;

@@ -7,6 +7,7 @@ import com.github.catvod.utils.okhttp.OkHttpUtil;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
@@ -35,13 +36,16 @@ public class JsonParallel {
                 List<Future<JSONObject>> futures = new ArrayList<>();
                 Set<String> jxNames = jx.keySet();
                 for (String jxName : jxNames) {
-                    String parseUrl = jx.get(jxName) + url;
-                    SpiderDebug.log(parseUrl);
+                    String parseUrl = jx.get(jxName);
                     futures.add(completionService.submit(new Callable<JSONObject>() {
                         @Override
                         public JSONObject call() throws Exception {
                             try {
-                                String json = OkHttpUtil.string(parseUrl, ParseOKTag, null);
+                                HashMap<String, String> reqHeaders = JsonBasic.getReqHeader(parseUrl);
+                                String realUrl = reqHeaders.get("url");
+                                reqHeaders.remove("url");
+                                SpiderDebug.log(realUrl + url);
+                                String json = OkHttpUtil.string(realUrl + url, ParseOKTag, reqHeaders);
                                 JSONObject taskResult = Misc.jsonParse(url, json);
                                 taskResult.put("jxFrom", jxName);
                                 SpiderDebug.log(taskResult.toString());
